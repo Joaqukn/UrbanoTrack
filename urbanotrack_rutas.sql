@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 8.0.44, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.40, for Win64 (x86_64)
 --
--- Host: localhost    Database: urbanotrack
+-- Host: 127.0.0.1    Database: urbanotrack
 -- ------------------------------------------------------
--- Server version	8.0.44
+-- Server version	5.5.5-10.4.32-MariaDB
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -23,13 +23,13 @@ DROP TABLE IF EXISTS `rutas`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `rutas` (
-  `id` int NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `nombre_ruta` varchar(50) DEFAULT NULL,
   `origen` varchar(100) DEFAULT NULL,
   `destino` varchar(100) DEFAULT NULL,
   `distancia_km` decimal(5,2) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -38,6 +38,7 @@ CREATE TABLE `rutas` (
 
 LOCK TABLES `rutas` WRITE;
 /*!40000 ALTER TABLE `rutas` DISABLE KEYS */;
+INSERT INTO `rutas` VALUES (6,'zona sur','sur',NULL,NULL),(7,'zona este','este',NULL,NULL),(8,'zona norte','norte',NULL,NULL),(9,'zona alta','sur',NULL,NULL);
 /*!40000 ALTER TABLE `rutas` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -50,4 +51,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-11-03 10:59:27
+-- Dump completed on 2025-11-27  5:56:20

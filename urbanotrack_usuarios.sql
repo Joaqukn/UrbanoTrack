@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 8.0.44, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.40, for Win64 (x86_64)
 --
--- Host: localhost    Database: urbanotrack
+-- Host: 127.0.0.1    Database: urbanotrack
 -- ------------------------------------------------------
--- Server version	8.0.44
+-- Server version	5.5.5-10.4.32-MariaDB
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -23,16 +23,17 @@ DROP TABLE IF EXISTS `usuarios`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `usuarios` (
-  `id` int NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `nombre_usuario` varchar(50) NOT NULL,
   `correo` varchar(100) NOT NULL,
   `contrasena` varchar(255) NOT NULL,
-  `rol` enum('administrador','conductor','pasajero') DEFAULT 'pasajero',
-  `fecha_registro` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `rol` enum('administrador','conductor','pasajero') NOT NULL DEFAULT 'pasajero',
+  `fecha_registro` timestamp NOT NULL DEFAULT current_timestamp(),
+  `estado` enum('activo','bloqueado') NOT NULL DEFAULT 'activo',
   PRIMARY KEY (`id`),
   UNIQUE KEY `nombre_usuario` (`nombre_usuario`),
   UNIQUE KEY `correo` (`correo`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -41,7 +42,7 @@ CREATE TABLE `usuarios` (
 
 LOCK TABLES `usuarios` WRITE;
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
-INSERT INTO `usuarios` VALUES (8,'ADMIN','Jeri@gmail.com','5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5','pasajero','2025-11-03 13:37:10');
+INSERT INTO `usuarios` VALUES (2,'test2','test2@gmail.com','$2b$12$8O104xp.D3sGhp9xkFeD.OZHzxe3PkuBNg7DdaTx9Nh3Cl5Dka2su','administrador','2025-11-26 21:00:48','activo'),(3,'test','test@gmail.com','$2b$12$201KMnWoysyc7TM3RMjEc.7HRMCvoYXER/sjD1bA3u7vDdolLQg2G','pasajero','2025-11-26 21:01:27','activo'),(8,'test3','test3@gmail.com','$2b$12$unX/FWw1179xNyrJBa6g8utIfubdnYW9Ryw7ylZazr2hwgN2yyWvC','conductor','2025-11-27 06:44:27','activo'),(13,'test4','test4@gmail.com','$2b$12$787h2tvRh13xYuVSEkVU/uHDt.wOc.2wW5jZgG6upE/pMYvNdLp2.','conductor','2025-11-27 06:51:19','activo');
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -54,4 +55,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-11-03 10:59:27
+-- Dump completed on 2025-11-27  5:56:20
